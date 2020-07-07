@@ -1,0 +1,5 @@
+*.sqlite3
+
+__pycharm__/
+.idea
+migrations/

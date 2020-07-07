@@ -1,0 +1,23 @@
+{% extends 'basic_page.html' %}
+
+{% block content %}
+     <main role="main" class="container">
+         <div class="jumbotron">
+            <form action="{% url 'main_blog:add_post' %}" method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-group">
+                        {% if field.errors  %}
+                            <div class="alert alert-danger">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                        <p>{{ field.label_tag }}</p>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+         </div>
+     </main>
+{% endblock %}

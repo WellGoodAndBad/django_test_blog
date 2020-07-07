@@ -1,0 +1,23 @@
+
+        <!-- contact form grid -->
+        <div class="contact-single">
+            <h3 class="editContent">
+                <span class="sub-tittle editContent">{{ post.comment_set.count }}</span>
+                Оставить отзыв
+            </h3>
+            <form action="{% url 'main_blog:new_comment' post.id %}" method="post" class="mt-4" id="formReview">
+                {% csrf_token %}
+                <input type="hidden" name="parent" id="contactparent" value="">
+                <div class="form-group">
+                    <label for="idCommentMessage" class="editContent">
+                        Ваш комментарий *
+                    </label>
+                    <textarea class="form-control" id="idCommentMessage" name="comment_text" rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Отправить
+                </button>
+            </form>
+        </div>
+        <!--  //contact form grid ends here -->

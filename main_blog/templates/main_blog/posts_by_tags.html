@@ -1,0 +1,33 @@
+{% extends 'basic_page.html' %}
+
+{% block content %}
+
+    <main role="main" class="container">
+        {% for post in posts.post_tags.all %}
+              <div class="jumbotron">
+                <h1>{{ post.title }}</h1>
+                <p class="lead">{{ post }}</p>
+                <a class="btn btn-lg btn-primary" href="{{ post.get_absolute_url }}" role="button">читать дальше »</a>
+
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">создан: {{ post.date_create|date:"d-m-Y" }}</small>
+                </div>
+                  <div class="container">
+                      <div class="col-12 col-md">
+                        <div class="row ">
+                            <p>Тэги: </p>
+                            {% for tag in post.tags.all %}
+                                <a href="{% url 'main_blog:posts_by_tag' tag.slug %}"><span class="tag tag-default">{{ tag.title }}</span></a>
+                                {% if not forloop.last %}, {% endif %}
+                            {% endfor %}
+                        </div>
+                      </div>
+                  </div>
+
+
+              </div>
+
+        {% endfor %}
+    </main>
+
+{% endblock %}

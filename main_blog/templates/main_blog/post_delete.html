@@ -1,0 +1,12 @@
+{% extends 'basic_page.html' %}
+
+{% block content %}
+     <main role="main" class="container">
+         <h1>Delete post</h1>
+            <form action="{% url 'main_blog:del_post' slug=post.slug %}" method="post">
+                {% csrf_token %}
+                <p>Are you sure you want to delete "{{ post.title }}"?</p>
+                <input type="submit" value="Confirm" />
+            </form>
+     </main>
+{% endblock %}
